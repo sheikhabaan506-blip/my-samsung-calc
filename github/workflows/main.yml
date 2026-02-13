@@ -1,0 +1,16 @@
+name: Build APK
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build with Buildozer
+        uses: Akuli/buildozer-action@v1
+        with:
+          buildozer_version: stable
+          command: buildozer android debug
